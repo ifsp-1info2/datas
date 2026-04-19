@@ -429,8 +429,11 @@
       if (ev.downloads && ev.downloads.length > 0) {
         html += `<div class="downloads-label">Downloads & Links</div>`;
         ev.downloads.forEach(dl => {
-          html += `<a href="${esc(dl.url)}" target="_blank" rel="noopener" class="download-link">
-            <span class="dl-icon">↓</span> ${esc(dl.label)}
+          const isExternal = dl.url.startsWith('http') || dl.type === 'link';
+          const icon = isExternal ? "🔗" : "⬇";
+          const downloadAttr = isExternal ? "" : "download";
+          html += `<a href="${esc(dl.url)}" ${downloadAttr} target="_blank" rel="noopener" class="download-link">
+            <span class="dl-icon">${icon}</span> ${esc(dl.label)}
           </a>`;
         });
       }

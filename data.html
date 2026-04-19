@@ -324,10 +324,10 @@
         <div class="downloads-box">
           <div class="downloads-title">🔗 Materiais e Links</div>
           ${downloads.map(dl => {
-            const isLink = dl.type === 'link';
-            const icon = isLink ? "⬇" : '⬇';
+            const isExternal = dl.url.startsWith('http') || dl.type === 'link';
+            const icon = isExternal ? "🔗" : "⬇";
             // Adiciona o atributo download se não for um link externo
-            const downloadAttr = isLink ? '' : 'download';
+            const downloadAttr = isExternal ? '' : 'download';
             return `
               <a href="${escapeHtml(dl.url)}" ${downloadAttr} target="_blank" rel="noopener" class="download-link">
                 <span class="dl-icon">${icon}</span>
