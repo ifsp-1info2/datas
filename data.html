@@ -124,7 +124,7 @@
   <header>
     <div>
       <h1>Calendário Escolar</h1>
-      <div class="subtitle">Programação completa de atividades</div>
+      
     </div>
 
     <div style="display: flex; align-items: center; gap: 12px;">
@@ -144,7 +144,6 @@
 
           <div class="popover-footer">
             <button type="button" class="popover-action" id="clear-weekdays">Limpar</button>
-            <button type="button" class="popover-action" id="reset-current-month">Mês atual</button>
             <button type="button" class="popover-action" id="close-filter">Fechar</button>
           </div>
         </div>
@@ -177,6 +176,7 @@
       </div>
     </section>
   </main>
+
   <script src="eventos.js"></script>
   <script>
     const MONTHS = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
@@ -461,13 +461,6 @@
 
     filterButton.addEventListener('click', togglePopover);
     document.getElementById('close-filter').addEventListener('click', closePopover);
-    document.getElementById('reset-current-month').addEventListener('click', () => {
-      syncCurrentMonth(true);
-      state.selectedWeekdays = new Set([0, 1, 2, 3, 4, 5, 6]);
-      buildWeekdayGrid();
-      render();
-      closePopover();
-    });
     document.getElementById('clear-weekdays').addEventListener('click', () => {
       state.selectedWeekdays.clear();
       render();

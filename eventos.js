@@ -1,5 +1,5 @@
 window.eventos = {
-  "2026-04-18": [
+  "2026-04-11": [
     {
       "title": "Exemplo: Sábado Letivo",
       "time": "12:35h - 18:00h",
