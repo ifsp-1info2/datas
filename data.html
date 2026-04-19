@@ -322,13 +322,19 @@
       if (!downloads || !downloads.length) return '';
       return `
         <div class="downloads-box">
-          <div class="downloads-title">⬇ Downloads</div>
-          ${downloads.map(dl => `
-            <a href="${escapeHtml(dl.url)}" target="_blank" rel="noopener" class="download-link">
-              <span class="dl-icon">↓</span>
-              <span>${escapeHtml(dl.label)}</span>
-            </a>
-          `).join('')}
+          <div class="downloads-title">🔗 Materiais e Links</div>
+          ${downloads.map(dl => {
+            const isLink = dl.type === 'link';
+            const icon = isLink ? "⬇" : '⬇';
+            // Adiciona o atributo download se não for um link externo
+            const downloadAttr = isLink ? '' : 'download';
+            return `
+              <a href="${escapeHtml(dl.url)}" ${downloadAttr} target="_blank" rel="noopener" class="download-link">
+                <span class="dl-icon">${icon}</span>
+                <span>${escapeHtml(dl.label)}</span>
+              </a>
+            `;
+          }).join('')}
         </div>
       `;
     }

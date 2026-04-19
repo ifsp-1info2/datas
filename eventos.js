@@ -4,7 +4,18 @@ window.eventos = {
       "title": "Exemplo: Sábado Letivo",
       "time": "12:35h - 18:00h",
       "description": "Aula Normal.",
-    
+      "downloads": [
+         {
+           "label": "Site EXEMPLO IFSP",
+           "url": "https://www.ifsp.edu.br/",
+           "type": "link"
+         },
+         {
+           "label": "Araras",
+           "url": "arquivos/araras.jpg",
+          
+         }
+      ]
     },
   ]
 };

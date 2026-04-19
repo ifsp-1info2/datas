@@ -115,7 +115,10 @@
       <h1>Horários de Aulas</h1>
       <div class="subtitle">Grade semanal de disciplinas</div>
     </div>
-    <a href="index.html" class="btn-header-back">← Voltar ao Portal</a>
+    <div style="display: flex; gap: 10px;">
+      <button id="export-pdf" class="btn-header-back" style="cursor: pointer; background: var(--accent); color: white; border-color: var(--accent);">Exportar Grade</button>
+      <a href="index.html" class="btn-header-back">← Voltar ao Portal</a>
+    </div>
   </header>
 
   <main>
@@ -187,6 +190,20 @@
     </div>
   </main>
 
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script>
+    document.getElementById('export-pdf').addEventListener('click', () => {
+      const element = document.querySelector('.schedule-card');
+      const options = {
+        margin: 10,
+        filename: 'grade-horaria.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'landscape' }
+      };
+      
+      html2pdf().set(options).from(element).save();
+    });
+  </script>
 </body>
 </html>
